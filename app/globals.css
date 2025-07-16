@@ -9,6 +9,7 @@
 	--color-neutral-light: #e4ede3;
 	--color-success: #47a138;
 	--color-black: #000000;
+	--color-white: #FFFFFF;
 }
 
 @theme {
@@ -21,6 +22,7 @@
 	--color-neutral-light: var(--color-neutral-light);
 	--color-success: var(--color-success);
 	--color-black: var(--color-black);
+	--color-white: var(--color-white);
 
 	--text-xl: 1.5625rem; /* 25px */
 	--text-lg: 1.25rem; /* 20px */
@@ -31,10 +33,16 @@
 	--line-height-lg: 1.75rem;
 	--line-height-md: 1.5rem;
 	--line-height-sm: 1.25rem; */
+
+	--font-weight-semibold: 600;
+	--font-weight-regular: 400;
+	--font-weight-bold: 700;
+
+	--radius-default: 8px;
 }
 
 body {
-	background: var(--background);
-	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+	background: var(--color-neutral-light);
+	color: var(--color-black);
+	font-family: var(--font-inter);
 }
