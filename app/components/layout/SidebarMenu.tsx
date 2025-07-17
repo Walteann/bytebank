@@ -1,7 +1,9 @@
 "use client";
 
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const menuItems = [
 	{ label: "Início", href: "/" },
@@ -12,31 +14,61 @@ const menuItems = [
 
 export default function SidebarMenu() {
 	const pathname = usePathname();
+	const [open, setOpen] = useState(false);
 
 	return (
-		<nav className="space-y-6">
-			<ul className="space-y-4">
+		<nav className="w-full @container">
+			{/* Botão Hamburguer (visível só em telas pequenas) */}
+			<button
+				onClick={() => setOpen(!open)}
+				className="block @min-[426px]:hidden lg:hidden  p-2 mb-4 rounded absolute top-[26px] left-[10px]"
+			>
+				<Bars3Icon  className="w-[32px] h-[32px] text-accent"/>
+			</button>
+
+			<ul
+				className={`
+					${open ? "flex" : "hidden"}
+					flex-col items-center gap-4
+					
+					bg-white
+					absolute
+					p-[30px]
+					top-[0]
+					left-[0]
+					@min-[426px]:relative
+					@min-[426px]:p-0
+					@min-[426px]:bg-transparent
+					@min-[426px]:flex
+					@min-[426px]:flex-row
+					@min-[426px]:items-start
+					lg:flex
+					lg:relative
+					lg:flex-column
+					lg:items-start
+					lg:p-0
+				`}
+			>
+				<button onClick={() => setOpen(!open)}>
+				<XMarkIcon className="w-[24px] h-[24px] text-success @min-[426px]:hidden lg:hidden absolute top-[8px] right-[8px]"/>
+				</button>
 				{menuItems.map((item, index) => {
 					const isActive = pathname === item.href;
 					const isLast = index === menuItems.length - 1;
 
-					let classes =
-						"text-md block pb-1 text-center transition-colors";
+					let classes = "text-md block pb-1 transition-colors sm:absolute lg:relative @min-[426px]:w-[138px] lg:text-center";
 
 					if (isActive) {
-						classes +=
-							" text-success font-bold border-b-2 border-success";
+						classes += " text-success font-bold border-b-2 border-success lg:border-b-1 ";
 					} else {
-						classes +=
-							" text-black font-regular hover:border-success hover:text-success";
-
+						classes += " text-black font-regular hover:border-success hover:text-success";
 						if (!isLast) {
-							classes += " border-b border-black";
+							classes += " @min-[1024px]:border-b border-black lg:border-none";
 						}
 					}
 
 					return (
-						<li key={item.href}>
+						<li key={item.href} className="w-full text-center lg:text-left m-[10px] @min-[426px]:m-0 ">
 							<Link href={item.href} className={classes}>
 								{item.label}
 							</Link>
