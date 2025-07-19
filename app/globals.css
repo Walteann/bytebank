@@ -10,6 +10,7 @@
 	--color-success: #47a138;
 	--color-black: #000000;
 	--color-white: #FFFFFF;
+	--color-neutral-grey: #8B8B8B;
 }
 
 @theme {
@@ -23,6 +24,7 @@
 	--color-success: var(--color-success);
 	--color-black: var(--color-black);
 	--color-white: var(--color-white);
+	--color-neutral-grey: var(--color-neutral-grey);
 
 	--text-xl: 1.5625rem; /* 25px */
 	--text-lg: 1.25rem; /* 20px */

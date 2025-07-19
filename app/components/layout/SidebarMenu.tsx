@@ -45,7 +45,6 @@ export default function SidebarMenu() {
 					lg:flex
 					lg:relative
 					lg:flex-column
-					lg:items-start
 					lg:p-0
 				`}
 			>
