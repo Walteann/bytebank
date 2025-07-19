@@ -49,3 +49,19 @@ body {
 	color: var(--color-black);
 	font-family: var(--font-inter);
 }
+
+.bg-custom-pixel {
+  background-image: url('./../public/images/pixels2.svg'), url('./../public/images/Ilustração1.svg');
+  background-size: auto, auto;
+  background-position: bottom right, bottom 0 left 32px;
+  background-repeat: no-repeat, no-repeat;
+}
+
+@media (min-width: 640px) {
+  .bg-custom-pixel {
+    background-image: url('./../public/images/pixels2.svg'), url('./../public/images/pixels1.svg'), url('./../public/images/Ilustração1.svg');
+    background-size: auto, auto, auto;
+    background-position: bottom left, top right, bottom 0 left 32px;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+  }
+}
