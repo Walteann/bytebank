@@ -48,7 +48,7 @@ export default function InputNumber({
   return (
     <div className={'flex flex-col gap-[16px] ' + className}>
       {label && (
-        <label htmlFor={id} className="text-md text-neutral-500 font-semibold">
+        <label htmlFor={id} className="text-md text-primary font-semibold">
           {label}
         </label>
       )}

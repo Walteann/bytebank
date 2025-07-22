@@ -38,11 +38,6 @@
 	--text-md: 1rem; /* 16px */
 	--text-sm: 0.8125rem; /* 13px */
 
-	/* --line-height-xl: 2rem;
-	--line-height-lg: 1.75rem;
-	--line-height-md: 1.5rem;
-	--line-height-sm: 1.25rem; */
-
 	--font-weight-semibold: 600;
 	--font-weight-regular: 400;
 	--font-weight-bold: 700;
@@ -71,6 +66,20 @@ body {
 	background-size: 146.06px 144px, auto, 146.06px 144px;
 	background-position: top left, bottom 24px right 24px, bottom right;
 	background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+
+
+.custom-404 {
+	background-image: url('./../public/images/Ilustração404.svg');
+	background-size: 312px 471.9px;
+	background-repeat: no-repeat;
+	background-position:  bottom 0px center;
+}
+
+.bg-custom-gradient {
+	background: linear-gradient(180deg, #004D61 0%, #FFFFFF 100%);
+
 }
 
 @media (min-width: 640px) {

@@ -28,7 +28,7 @@ export default function NovaTrasancao() {
 		<section className="bg-neutral-grey2 rounded-default flex flex-col bg-custom-pixel2">
 			<div className="p-[24px]">
 				<form className="flex items-center flex-col sm:items-start">
-					<h2 className="font-semibold text-xl text-neutral-500 mb-[32px]">
+					<h2 className="font-semibold text-xl text-primary mb-[32px]">
 						Nova transação
 					</h2>
 					<InputSelect
@@ -44,7 +44,7 @@ export default function NovaTrasancao() {
 						id="valor"
 						name="valor"
 						label="Valor"
-						placeholder="00,00"
+						placeholder="0,00"
 						monetary={true}
 						className="w-[144px] sm:w-[250px] md:w-[250px] lg:w-[250px]"
 						onChange={(val) => console.log("Valor numérico:", val)}
