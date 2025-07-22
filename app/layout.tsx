@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "./components/layout/Header";
 import SidebarMenu from "./components/layout/SidebarMenu";
 import Extrato from "./components/layout/Extrato";
-import NovaTrasancao from "./components/layout/NovaTrasancao";
+import { Toaster } from "sonner";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -29,9 +29,10 @@ export default function RootLayout({
 
 				<main className="flex justify-center @container min-h-screen">
 					<div className="flex flex-col  @min-[1024px]:flex-row w-full max-w-[1200px] gap-[24px] pt-[24px] items-start p-[24px]">
-					
-						<aside className="w-full  @min-[1024px]:w-[180px] @min-[1024px]:bg-white @min-[426px]:p-4 @min-[426px]:mb-[32px] rounded-default 
-					lg:h-full ">
+						<aside
+							className="w-full  @min-[1024px]:w-[180px] @min-[1024px]:bg-white @min-[426px]:p-4 @min-[426px]:mb-[32px] rounded-default 
+					lg:h-full "
+						>
 							<SidebarMenu />
 						</aside>
 
@@ -44,6 +45,7 @@ export default function RootLayout({
 						</aside>
 					</div>
 				</main>
+				<Toaster position="top-center" />
 			</body>
 		</html>
 	);

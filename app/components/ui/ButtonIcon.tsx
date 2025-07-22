@@ -20,7 +20,7 @@ export default function ButtonIcon({
   `;
 
 	return (
-		<button className={baseClasses} style={{ width: size, height: size }}>
+		<button onClick={onClick} className={baseClasses} style={{ width: size, height: size }}>
 			{icon}
 		</button>
 	);

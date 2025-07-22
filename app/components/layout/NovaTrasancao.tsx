@@ -6,10 +6,11 @@ import InputNumber from "../ui/InputNumber";
 import InputSelect from "../ui/InputSelect";
 import { v4 as uuidv4 } from "uuid";
 import {
-	Historico,
 	HistoricoTransacao,
 } from "@/app/shared/interfaces/historico";
-import { HISTORICO_LOCAL_STORAGE } from "@/app/shared/constants/variaveis-local-storage";
+import { useHistoricoStore } from "@/app/shared/stores/useHistoricoStore";
+
+import { toast } from "sonner";
 
 export default function NovaTrasancao() {
 	const optionsTipoTransacao = [
@@ -31,35 +32,6 @@ export default function NovaTrasancao() {
 	const [valor, setValor] = useState<number>(0);
 	const [error, setError] = useState("");
 
-	function salvarTransacaoNoLocalStorage(nova: HistoricoTransacao) {
-		const historicoLocal = localStorage.getItem(HISTORICO_LOCAL_STORAGE);
-		const historico: Historico[] = historicoLocal
-			? JSON.parse(historicoLocal)
-			: [];
-
-		const hoje = new Date();
-		const mesReferencia = hoje.toLocaleString("default", { month: "long" });
-
-		const mesAtual = historico.find(
-			(h) => h.mesReferencia === mesReferencia
-		);
-
-		if (mesAtual) {
-			mesAtual.transacoes.push(nova);
-		} else {
-			historico.push({
-				id: uuidv4(),
-				mesReferencia,
-				transacoes: [nova],
-			});
-		}
-
-		localStorage.setItem(
-			HISTORICO_LOCAL_STORAGE,
-			JSON.stringify(historico)
-		);
-	}
-
 	function handleSubmit(event: React.FormEvent) {
 		event.preventDefault();
 
@@ -77,10 +49,12 @@ export default function NovaTrasancao() {
 			data: new Date().toLocaleDateString("pt-BR"),
 		};
 
-		console.log(novaTransacao);
+		useHistoricoStore.getState().adicionarTransacao(novaTransacao);
 
-		salvarTransacaoNoLocalStorage(novaTransacao);
-		alert("Transação salva com sucesso!");
+		toast("Transação salva com sucesso!", {
+			unstyled: true,
+			className: "bg-success text-neutral-500 font-bold px-4 py-2 rounded shadow",
+		});
 
 		// Limpa os campos
 		setValor(0);

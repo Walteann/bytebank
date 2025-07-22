@@ -1,29 +1,19 @@
-'use client'
+"use client";
 
 import { PencilIcon, TrashIcon } from "@heroicons/react/16/solid";
 import ButtonIcon from "../ui/ButtonIcon";
-import { HISTORICO_LOCAL_STORAGE } from "@/app/shared/constants/variaveis-local-storage";
-import { MOCK_HISTORICO } from "@/app/shared/constants/mock-historico";
-import { useEffect, useState } from "react";
-import { Historico } from "@/app/shared/interfaces/historico";
+import { useHistoricoStore } from "@/app/shared/stores/useHistoricoStore";
+import { ordenarHistoricoPorMes } from "@/app/shared/utils/ordenar-historico";
 
 export default function Extrato() {
+	const historico = useHistoricoStore((state) => state.historico);
+	const removerExtrato = useHistoricoStore(
+		(state) => state.removerTodosOsHistorico
+	);
 
-	const [historico, setHistorico] = useState<Historico[]>([]);
-
-	useEffect(() => {
-		const existe = localStorage.getItem(HISTORICO_LOCAL_STORAGE);
-	
-		if (!existe) {
-			localStorage.setItem(HISTORICO_LOCAL_STORAGE, JSON.stringify(MOCK_HISTORICO));
-		}
-	
-		const extrato = localStorage.getItem(HISTORICO_LOCAL_STORAGE);
-		if (extrato) {
-			console.log(JSON.parse(extrato));
-			setHistorico(JSON.parse(extrato));
-		}
-	}, [])
+	const removerHistorico = () => {
+		removerExtrato();
+	};
 
 	return (
 		<div className="w-full sm:max-w-[240px] md:max-w-[240px]">
@@ -37,11 +27,12 @@ export default function Extrato() {
 					<ButtonIcon
 						className="bg-primary"
 						icon={<TrashIcon className="p-[6px] text-white" />}
+						onClick={removerHistorico}
 					/>
 				</div>
 			</div>
 			<ul className="space-y-2 text-sm mt-[16px]">
-				{historico.map((ext) => {
+				{ordenarHistoricoPorMes(historico).map((ext) => {
 					return (
 						<li key={ext.id} className="mb-[16px]">
 							<div className="relative">
@@ -99,5 +90,3 @@ export default function Extrato() {
 		</div>
 	);
 }
-
-
