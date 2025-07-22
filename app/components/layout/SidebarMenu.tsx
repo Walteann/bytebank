@@ -29,8 +29,7 @@ export default function SidebarMenu() {
 			<ul
 				className={`
 					${open ? "flex" : "hidden"}
-					flex-col items-center gap-4
-					
+					flex-col items-center
 					bg-white
 					absolute
 					p-[30px]
@@ -42,6 +41,7 @@ export default function SidebarMenu() {
 					@min-[426px]:flex
 					@min-[426px]:flex-row
 					@min-[426px]:items-start
+					@min-[426px]:mb-[16px]
 					lg:flex
 					lg:relative
 					lg:flex-column
@@ -49,25 +49,25 @@ export default function SidebarMenu() {
 				`}
 			>
 				<button onClick={() => setOpen(!open)}>
-				<XMarkIcon className="w-[24px] h-[24px] text-success @min-[426px]:hidden lg:hidden absolute top-[8px] right-[8px]"/>
+				<XMarkIcon className="w-[24px] h-[24px] text-primary @min-[426px]:hidden lg:hidden absolute top-[8px] right-[8px]"/>
 				</button>
 				{menuItems.map((item, index) => {
 					const isActive = pathname === item.href;
 					const isLast = index === menuItems.length - 1;
 
-					let classes = "text-md block pb-1 transition-colors sm:absolute lg:relative @min-[426px]:w-[138px] lg:text-center";
+					let classes = "text-md block transition-colors sm:absolute lg:relative @min-[426px]:w-[138px] lg:text-center py-[16px]";
 
 					if (isActive) {
-						classes += " text-success font-bold border-b-2 border-success lg:border-b-1 ";
+						classes += " text-primary font-bold border-b-2 border-primary lg:border-b-2 ";
 					} else {
-						classes += " text-black font-regular hover:border-success hover:text-success";
-						if (!isLast) {
-							classes += " @min-[1024px]:border-b border-black lg:border-none";
+						classes += " text-primary font-regular hover:border-primary hover:text-primary lg:border-b lg:border-b-1";
+						if (isLast) {
+							classes += " @min-[1024px]:border-b lg:border-none";
 						}
 					}
 
 					return (
-						<li key={item.href} className="w-full text-center lg:text-left m-[10px] @min-[426px]:m-0 ">
+						<li key={item.href} className="w-full text-center lg:text-left  @min-[426px]:m-0 ">
 							<Link href={item.href} className={classes}>
 								{item.label}
 							</Link>

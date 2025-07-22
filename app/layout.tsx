@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/layout/Header";
 import SidebarMenu from "./components/layout/SidebarMenu";
 import Extrato from "./components/layout/Extrato";
+import NovaTrasancao from "./components/layout/NovaTrasancao";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -26,10 +27,11 @@ export default function RootLayout({
 			<body className={`${inter.variable} antialiased`}>
 				<Header userName="Joana da Silva Oliveira" />
 
-				<main className="flex justify-center @container">
+				<main className="flex justify-center @container min-h-screen">
 					<div className="flex flex-col  @min-[1024px]:flex-row w-full max-w-[1200px] gap-[24px] pt-[24px] items-start p-[24px]">
 					
-						<aside className="w-full  @min-[1024px]:w-[180px] @min-[1024px]:bg-white @min-[426px]:p-4  rounded-default">
+						<aside className="w-full  @min-[1024px]:w-[180px] @min-[1024px]:bg-white @min-[426px]:p-4 @min-[426px]:mb-[32px] rounded-default 
+					lg:h-full ">
 							<SidebarMenu />
 						</aside>
 

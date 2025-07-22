@@ -9,12 +9,15 @@
 	--color-neutral-light: #e4ede3;
 	--color-success: #47a138;
 	--color-black: #000000;
-	--color-white: #FFFFFF;
-	--color-neutral-grey: #8B8B8B;
+	--color-white: #ffffff;
+	--color-neutral-grey: #8b8b8b;
+	--color-neutral-grey2: #cbcbcb;
+
+	--color-black444: #444444;
+	--color-disabled: #cccccc;
 }
 
 @theme {
-
 	--color-primary: var(--color-primary);
 	--color-primary-light: var(--color-primary-light);
 	--color-accent: var(--color-accent);
@@ -25,6 +28,10 @@
 	--color-black: var(--color-black);
 	--color-white: var(--color-white);
 	--color-neutral-grey: var(--color-neutral-grey);
+	--color-neutral-grey2: var(--color-neutral-grey2);
+
+	--color-black444: var(--color-black444);
+	--color-disabled: var(--color-disabled);
 
 	--text-xl: 1.5625rem; /* 25px */
 	--text-lg: 1.25rem; /* 20px */
@@ -41,7 +48,6 @@
 	--font-weight-bold: 700;
 
 	--radius-default: 8px;
-
 }
 
 body {
@@ -51,17 +57,38 @@ body {
 }
 
 .bg-custom-pixel {
-  background-image: url('./../public/images/pixels2.svg'), url('./../public/images/Ilustração1.svg');
-  background-size: auto, auto;
-  background-position: bottom right, bottom 0 left 32px;
-  background-repeat: no-repeat, no-repeat;
+	background-image: url("./../public/images/pixels2.svg"),
+		url("./../public/images/Ilustração1.svg");
+	background-size: 144px 141.97px, auto;
+	background-position: bottom right, bottom 0 left 32px;
+	background-repeat: no-repeat, no-repeat;
+}
+
+.bg-custom-pixel2 {
+	background-image: url("./../public/images/pixels3.svg"),
+		url("./../public/images/Ilustração2.svg"),
+		url("./../public/images/pixels4.svg");
+	background-size: 146.06px 144px, auto, 146.06px 144px;
+	background-position: top left, bottom 24px right 24px, bottom right;
+	background-repeat: no-repeat, no-repeat, no-repeat;
 }
 
 @media (min-width: 640px) {
-  .bg-custom-pixel {
-    background-image: url('./../public/images/pixels2.svg'), url('./../public/images/pixels1.svg'), url('./../public/images/Ilustração1.svg');
-    background-size: auto, auto, auto;
-    background-position: bottom left, top right, bottom 0 left 32px;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-  }
+	.bg-custom-pixel {
+		background-image: url("./../public/images/pixels2.svg"),
+			url("./../public/images/pixels1.svg"),
+			url("./../public/images/Ilustração1.svg");
+		background-size: 144px 141.97px, 144px 141.97px, auto;
+		background-position: bottom left, top right, bottom 0 left 32px;
+		background-repeat: no-repeat, no-repeat, no-repeat;
+	}
+
+	.bg-custom-pixel2 {
+		background-image: url("./../public/images/pixels3.svg"),
+			url("./../public/images/pixels4.svg"),
+			url("./../public/images/Ilustração2.svg");
+		background-size: 146.06px 144px, 146.06px 144px, auto;
+		background-position: top right, bottom left, bottom 24px right 24px;
+		background-repeat: no-repeat, no-repeat, no-repeat;
+	}
 }
