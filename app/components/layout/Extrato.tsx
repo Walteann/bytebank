@@ -1,70 +1,30 @@
+'use client'
+
 import { PencilIcon, TrashIcon } from "@heroicons/react/16/solid";
 import ButtonIcon from "../ui/ButtonIcon";
-//
-const EXTRATO = [
-	{
-		id: 1,
-		mesReferencia: "Julho",
-		transacoes: [
-			{
-				id: 1,
-				valor: 1200.0,
-				tipoOperacao: "Depósito",
-				data: "03/07/2025",
-			},
-			{
-				id: 2,
-				valor: -200.0,
-				tipoOperacao: "Transferência",
-				data: "10/07/2025",
-			},
-		],
-	},
-	{
-		id: 2,
-		mesReferencia: "Junho",
-		transacoes: [
-			{
-				id: 3,
-				valor: 800.0,
-				tipoOperacao: "Depósito",
-				data: "12/06/2025",
-			},
-			{
-				id: 4,
-				valor: -100.0,
-				tipoOperacao: "Transferência",
-				data: "20/06/2025",
-			},
-		],
-	},
-	{
-		id: 3,
-		mesReferencia: "Maio",
-		transacoes: [
-			{
-				id: 5,
-				valor: 950.0,
-				tipoOperacao: "Depósito",
-				data: "05/05/2025",
-			},
-			{
-				id: 7,
-				valor: 100.0,
-				tipoOperacao: "Depósito",
-				data: "05/05/2025",
-			},
-			{
-				id: 6,
-				valor: -300.0,
-				tipoOperacao: "Transferência",
-				data: "18/05/2025",
-			},
-		],
-	},
-];
+import { HISTORICO_LOCAL_STORAGE } from "@/app/shared/constants/variaveis-local-storage";
+import { MOCK_HISTORICO } from "@/app/shared/constants/mock-historico";
+import { useEffect, useState } from "react";
+import { Historico } from "@/app/shared/interfaces/historico";
 
 export default function Extrato() {
+
+	const [historico, setHistorico] = useState<Historico[]>([]);
+
+	useEffect(() => {
+		const existe = localStorage.getItem(HISTORICO_LOCAL_STORAGE);
+	
+		if (!existe) {
+			localStorage.setItem(HISTORICO_LOCAL_STORAGE, JSON.stringify(MOCK_HISTORICO));
+		}
+	
+		const extrato = localStorage.getItem(HISTORICO_LOCAL_STORAGE);
+		if (extrato) {
+			console.log(JSON.parse(extrato));
+			setHistorico(JSON.parse(extrato));
+		}
+	}, [])
+
 	return (
 		<div className="w-full sm:max-w-[240px] md:max-w-[240px]">
 			<div className="flex justify-between  align-center mt-[8px]">
@@ -81,7 +41,7 @@ export default function Extrato() {
 				</div>
 			</div>
 			<ul className="space-y-2 text-sm mt-[16px]">
-				{EXTRATO.map((ext) => {
+				{historico.map((ext) => {
 					return (
 						<li key={ext.id} className="mb-[16px]">
 							<div className="relative">
@@ -139,3 +99,5 @@ export default function Extrato() {
 		</div>
 	);
 }
+
+

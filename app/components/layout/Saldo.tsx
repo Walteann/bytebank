@@ -1,6 +1,13 @@
-import { EyeIcon } from "@heroicons/react/16/solid";
+'use client'
+
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
+import { useState } from "react";
 
 export default function Saldo() {
+	const [showSaldo, setShowSaldo] = useState(true);
+
+	const toggleSaldo = () => setShowSaldo((prev) => !prev);
+
 	const saldoDaConta = 2000;
 	const dataAtual = new Date().toLocaleDateString("pt-BR", {
 		weekday: "long",
@@ -23,8 +30,15 @@ export default function Saldo() {
 					<div className="min-w-[200px] max-w-max">
 						<div className="flex items-center gap-[25px] p-[16px] pl-0">
 							<span className="font-semibold text-lg">Saldo</span>
-							<button className="w-[20px] h-[20px]">
-								<EyeIcon className="text-accent" />
+							<button
+								className="w-[20px] h-[20px] hover:cursor-pointer"
+								onClick={toggleSaldo}
+							>
+								{showSaldo ? (
+									<EyeIcon className="text-accent" />
+								) : (
+									<EyeSlashIcon className="text-accent" />
+								)}
 							</button>
 						</div>
 						<hr className="border-t-2 border-accent" />
@@ -32,10 +46,13 @@ export default function Saldo() {
 							Conta Corrente
 						</p>
 						<p className="font-regular text-[31px]">
-							{new Intl.NumberFormat("pt-BR", {
-								style: "currency",
-								currency: "BRL",
-							}).format(saldoDaConta)}
+
+							{showSaldo
+								? new Intl.NumberFormat("pt-BR", {
+										style: "currency",
+										currency: "BRL",
+								  }).format(saldoDaConta)
+								: "••••••••"}
 						</p>
 					</div>
 				</div>

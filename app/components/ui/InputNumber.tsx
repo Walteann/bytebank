@@ -56,7 +56,6 @@ export default function InputNumber({
         id={id}
         name={name}
         inputMode="numeric"
-        pattern="\d*"
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
