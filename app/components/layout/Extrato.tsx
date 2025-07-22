@@ -124,7 +124,10 @@ export default function Extrato() {
 													: "text-primary"
 											}`}
 										>
-											R$ {trasacao.valor}
+											{new Intl.NumberFormat("pt-BR", {
+												style: "currency",
+												currency: "BRL",
+											}).format(trasacao.valor)}
 										</span>
 									</div>
 								))}
