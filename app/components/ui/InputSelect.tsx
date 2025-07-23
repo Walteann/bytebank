@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
+import { IoMdArrowDropdown, IoMdArrowDropup  } from "react-icons/io";
 
 interface Option {
 	value: string;
@@ -49,9 +49,9 @@ export default function InputSelect({
 			>
 				<span>{selected ? selected.label : placeholder}</span>
 				{open ? (
-					<ChevronUpIcon className="w-4 h-4 text-primary" />
+					<IoMdArrowDropup className="w-4 h-4 text-primary" />
 				) : (
-					<ChevronDownIcon className="w-4 h-4 text-primary" />
+					<IoMdArrowDropdown className="w-4 h-4 text-primary" />
 				)}
 			</button>
 

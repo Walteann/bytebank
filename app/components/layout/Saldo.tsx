@@ -2,7 +2,7 @@
 
 import { useSaldoStore } from "@/app/shared/stores/saldoStorage";
 import { formatarParaBRL } from "@/app/shared/utils/formatar-currency";
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
+import { IoEye, IoEyeOff  } from "react-icons/io5";
 import { useState } from "react";
 
 export default function Saldo() {
@@ -38,9 +38,9 @@ export default function Saldo() {
 								onClick={toggleSaldo}
 							>
 								{showSaldo ? (
-									<EyeIcon className="text-accent" />
+									<IoEye className="text-[20px] text-accent" />
 								) : (
-									<EyeSlashIcon className="text-accent" />
+									<IoEyeOff className="text-[20px] text-accent" />
 								)}
 							</button>
 						</div>

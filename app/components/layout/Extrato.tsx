@@ -1,6 +1,7 @@
 "use client";
 
-import { PencilIcon, TrashIcon } from "@heroicons/react/16/solid";
+import { IoTrash } from "react-icons/io5";
+import { HiPencil } from "react-icons/hi";
 import ButtonIcon from "../ui/ButtonIcon";
 import { useHistoricoStore } from "@/app/shared/stores/useHistoricoStore";
 import { ordenarHistoricoPorMes } from "@/app/shared/utils/ordenar-historico";
@@ -29,16 +30,16 @@ export default function Extrato() {
 					<ButtonIcon
 						disabled={true}
 						className="bg-primary"
-						icon={<PencilIcon className="p-[6px] text-white" />}
+						icon={<HiPencil className="text-[26px] text-white" />}
 					/>
 					<ButtonIcon
 						className="bg-primary"
-						icon={<TrashIcon className="p-[6px] text-white" />}
+						icon={<IoTrash className="text-white text-[26px]" />}
 						onClick={removerHistorico}
 					/>
 				</div>
 			</div>
-			<ul className="space-y-2 text-sm mt-[16px]">
+			<ul className="space-y-2 text-sm mt-[16px] max-h-[60vh] sm:max-h-[50vh] md:max-h-[50vh] overflow-y-auto pr-2 scroll-thin">
 				{ordenarHistoricoPorMes(historico).map((ext) => {
 					return (
 						<li key={ext.id} className="mb-[16px]">
