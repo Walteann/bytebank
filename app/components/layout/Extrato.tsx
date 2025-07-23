@@ -8,6 +8,7 @@ import { ordenarHistoricoPorMes } from "@/app/shared/utils/ordenar-historico";
 
 import { useSaldoStore } from "@/app/shared/stores/saldoStorage";
 import { formatarParaBRL } from "@/app/shared/utils/formatar-currency";
+import ModalConfirmacao from "../ui/ModalConfirmacao";
 
 export default function Extrato() {
 	const historico = useHistoricoStore((state) => state.historico);
@@ -15,7 +16,7 @@ export default function Extrato() {
 		(state) => state.removerTodosOsHistorico
 	);
 
-	const resetarSaldo = useSaldoStore(state => state.resetarSaldo);
+	const resetarSaldo = useSaldoStore((state) => state.resetarSaldo);
 
 	const removerHistorico = () => {
 		removerExtrato();
@@ -32,11 +33,22 @@ export default function Extrato() {
 						className="bg-primary"
 						icon={<HiPencil className="text-[26px] text-white" />}
 					/>
-					<ButtonIcon
-						className="bg-primary"
-						icon={<IoTrash className="text-white text-[26px]" />}
-						onClick={removerHistorico}
-					/>
+
+					<ModalConfirmacao
+						titulo="Tem certeza que deseja prosseguir?"
+						descricao="Esta ação é irreversível. Ao confirmar, todas as transações serão apagadas e o saldo será redefinido para R$ 2.500,00.
+							Ao recarregar a página, os dados iniciais (mockados) serão restaurados no localStorage."
+						onConfirmar={removerHistorico}
+					>
+						{(abrirModal) => (
+							
+							<ButtonIcon
+								className="bg-primary"
+								icon={<IoTrash className="text-white text-[26px]" />}
+								onClick={abrirModal}
+							/>
+						)}
+					</ModalConfirmacao>
 				</div>
 			</div>
 			<ul className="space-y-2 text-sm mt-[16px] max-h-[60vh] sm:max-h-[50vh] md:max-h-[50vh] overflow-y-auto pr-2 scroll-thin">

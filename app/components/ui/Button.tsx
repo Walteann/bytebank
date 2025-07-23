@@ -3,12 +3,14 @@ interface ButtonProps {
 	className?: string;
 	type?: "button" | "submit" | "reset";
 	disabled?: boolean;
+	onClick?: () => void
 }
 
 export default function Button({
 	value,
 	type = "button",
 	className = "",
+	onClick,
 	disabled = false,
 }: ButtonProps) {
 	const baseClasses =
@@ -19,6 +21,7 @@ export default function Button({
 
 	return (
 		<button
+			onClick={onClick}
 			type={type}
 			disabled={disabled}
 			className={`${baseClasses} ${
