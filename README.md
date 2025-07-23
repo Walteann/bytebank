@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💰 Tech Challenge – Bytebank - Gerenciador Financeiro
 
-## Getting Started
+Este é o projeto final da fase 01, que reúne os conhecimentos adquiridos em todas as disciplinas. O objetivo principal é desenvolver o **frontend de uma aplicação de gerenciamento financeiro**, utilizando **Next.js**, **Design System** e conceitos de **Programação Orientada a Objetos (POO)**.
 
-First, run the development server:
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- [Next.js](https://nextjs.org/) – SSR e SSG com integração ao Node.js
+- [React](https://react.dev/)
+- [Zustand](https://zustand-demo.pmnd.rs/) – Gerenciamento de estado
+- [Tailwind CSS](https://tailwindcss.com/) – Estilização via utility classes
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [TypeScript](https://www.typescriptlang.org/) – Tipagem estática
+- Design System baseado no [Figma oficial do projeto](https://www.figma.com/design/ns5TC3X5Xr8V7I3LYKg9KA/ProjetoFinanceiro?node-id=503-4264)
+
+---
+
+## 📦 Requisitos
+
+Antes de rodar o projeto, certifique-se de ter instalado:
+
+- [Node.js v24.4.0](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+
+---
+
+## ⚙️ Como executar o projeto localmente
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clone o repositório
+git clone https://github.com/Walteann/bytebank.git
+cd seu-repositorio
+
+# Instale as dependências
+pnpm install
+# ou
+npm install
+# ou
+yarn install
+
+# Execute o projeto em ambiente de desenvolvimento
 pnpm dev
-# or
-bun dev
+# ou
+npm run dev
+# ou
+yarn dev
+
 ```
+---
+## Funcionalidades
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Home Page
+- [x] Boas-vindas ao usuário
+- [x] Exibição do saldo da conta corrente
+- [x] Extrato com as últimas transações
+- [x] Formulário para iniciar uma nova transação
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Listagem de Transações
+- [x] Exibição de todas as transações realizadas
+- [x] Agrupamento por mês
+- [x] Visualização de detalhes da transação
+- [x] Exclusão de transação
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Adicionar Transação
+- [x] Campos:
+  - Tipo de transação (depósito, transferência, etc.)
+  - Valor
 
-## Learn More
+### 🚀 Funcionalidade Plus: Pix
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A cada 2 minutos o usuário recebe um pix para carregar o saldo.
