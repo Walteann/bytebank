@@ -1,14 +1,16 @@
-'use client'
+"use client";
 
+import { useSaldoStore } from "@/app/shared/stores/saldoStorage";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
 
 export default function Saldo() {
+	const saldoDaConta = useSaldoStore((state) => state.saldo);
+
 	const [showSaldo, setShowSaldo] = useState(true);
 
 	const toggleSaldo = () => setShowSaldo((prev) => !prev);
 
-	const saldoDaConta = 2000;
 	const dataAtual = new Date().toLocaleDateString("pt-BR", {
 		weekday: "long",
 		day: "2-digit",
@@ -46,7 +48,6 @@ export default function Saldo() {
 							Conta Corrente
 						</p>
 						<p className="font-regular text-[31px]">
-
 							{showSaldo
 								? new Intl.NumberFormat("pt-BR", {
 										style: "currency",

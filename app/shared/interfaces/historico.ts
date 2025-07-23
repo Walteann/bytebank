@@ -3,6 +3,8 @@ export interface HistoricoTransacao {
     valor: number;
     tipoOperacao: string;
     data: string;
+    hora?: string;
+    origem?: string;
 }
 
 export interface Historico {

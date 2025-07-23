@@ -4,6 +4,9 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/16/solid";
 import ButtonIcon from "../ui/ButtonIcon";
 import { useHistoricoStore } from "@/app/shared/stores/useHistoricoStore";
 import { ordenarHistoricoPorMes } from "@/app/shared/utils/ordenar-historico";
+import { useEffect } from "react";
+import { Historico } from "@/app/shared/interfaces/historico";
+import { useSaldoStore } from "@/app/shared/stores/saldoStorage";
 
 export default function Extrato() {
 	const historico = useHistoricoStore((state) => state.historico);
@@ -11,8 +14,11 @@ export default function Extrato() {
 		(state) => state.removerTodosOsHistorico
 	);
 
+	const resetarSaldo = useSaldoStore(state => state.resetarSaldo);
+
 	const removerHistorico = () => {
 		removerExtrato();
+		resetarSaldo();
 	};
 
 	return (
@@ -21,6 +27,7 @@ export default function Extrato() {
 				<h2 className="font-bold text-xl">Histórico</h2>
 				<div className="flex gap-[15px]">
 					<ButtonIcon
+						disabled={true}
 						className="bg-primary"
 						icon={<PencilIcon className="p-[6px] text-white" />}
 					/>

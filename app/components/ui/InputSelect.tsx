@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
 interface Option {
@@ -14,6 +14,7 @@ interface InputSelectProps {
     label?: string;
 	options: Option[];
     className?: string | undefined;
+	value?: string | undefined;
 	onChange: (value: string) => void;
 	placeholder?: string;
 }
@@ -22,10 +23,16 @@ export default function InputSelect({
 	options,
 	onChange,
     className,
+	value,
 	placeholder = "Selecione o tipo de transação",
 }: InputSelectProps) {
 	const [open, setOpen] = useState(false);
 	const [selected, setSelected] = useState<Option | null>(null);
+
+	useEffect(() => {
+		const found = options.find((option) => option.value === value) || null;
+		setSelected(found);
+	}, [value, options]);
 
 	const handleSelect = (option: Option) => {
 		setSelected(option);
