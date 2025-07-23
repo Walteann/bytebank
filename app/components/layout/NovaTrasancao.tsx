@@ -16,6 +16,7 @@ import {
 } from "@/app/shared/constants/tipo-transacao";
 import { gerarTransacaoAleatoria } from "@/app/shared/constants/mock-historico";
 import { useSaldoStore } from "@/app/shared/stores/saldoStorage";
+import { formatarParaBRL } from "@/app/shared/utils/formatar-currency";
 
 export default function NovaTrasancao() {
 	const [tipoTransacao, setTipoTransacao] = useState<TipoTransacaoKey | "">(
@@ -25,11 +26,9 @@ export default function NovaTrasancao() {
 	const [error, setError] = useState("");
 
 	useEffect(() => {
-		const interval = setInterval(() => {
-			recebePix();
-		}, 120000); // a cada 2 minutos
+		const interval = criarIntervaloComLimite(recebePix, 120000, 5);
 
-		return () => clearInterval(interval); // limpa o intervalo ao desmontar
+		return () => clearInterval(interval);
 	}, []);
 
 	function handleSubmit(event: React.FormEvent) {
@@ -147,7 +146,7 @@ function recebePix(): void {
 				Você recebeu um Pix!
 			</strong>
 			<span className="text-sm opacity-80">
-				{transacao.valor} de {transacao.origem} agora está na sua conta.
+				{formatarParaBRL(transacao.valor)} de {transacao.origem} agora está na sua conta.
 			</span>
 		</div>
 	));
@@ -179,4 +178,22 @@ function toastSaldoInsuficiente() {
 			</span>
 		</div>
 	));
+}
+
+function criarIntervaloComLimite(
+	callback: () => void,
+	delay: number,
+	maxExecutions: number
+) {
+	let count = 0;
+	const interval = setInterval(() => {
+		if (count >= maxExecutions) {
+			clearInterval(interval);
+			return;
+		}
+		callback();
+		count++;
+	}, delay);
+
+	return interval;
 }

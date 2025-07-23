@@ -1,6 +1,7 @@
 "use client";
 
 import { useSaldoStore } from "@/app/shared/stores/saldoStorage";
+import { formatarParaBRL } from "@/app/shared/utils/formatar-currency";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
 
@@ -49,10 +50,7 @@ export default function Saldo() {
 						</p>
 						<p className="font-regular text-[31px]">
 							{showSaldo
-								? new Intl.NumberFormat("pt-BR", {
-										style: "currency",
-										currency: "BRL",
-								  }).format(saldoDaConta)
+								? formatarParaBRL(saldoDaConta)
 								: "••••••••"}
 						</p>
 					</div>

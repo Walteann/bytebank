@@ -4,9 +4,9 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/16/solid";
 import ButtonIcon from "../ui/ButtonIcon";
 import { useHistoricoStore } from "@/app/shared/stores/useHistoricoStore";
 import { ordenarHistoricoPorMes } from "@/app/shared/utils/ordenar-historico";
-import { useEffect } from "react";
-import { Historico } from "@/app/shared/interfaces/historico";
+
 import { useSaldoStore } from "@/app/shared/stores/saldoStorage";
+import { formatarParaBRL } from "@/app/shared/utils/formatar-currency";
 
 export default function Extrato() {
 	const historico = useHistoricoStore((state) => state.historico);
@@ -82,10 +82,7 @@ export default function Extrato() {
 													: "text-primary"
 											}`}
 										>
-											{new Intl.NumberFormat("pt-BR", {
-												style: "currency",
-												currency: "BRL",
-											}).format(trasacao.valor)}
+											{formatarParaBRL(trasacao.valor)}
 										</span>
 									</div>
 								))}
