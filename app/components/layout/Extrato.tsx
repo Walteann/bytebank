@@ -2,13 +2,13 @@
 
 import { IoTrash } from "react-icons/io5";
 import { HiPencil } from "react-icons/hi";
-import ButtonIcon from "../ui/ButtonIcon";
+import ButtonIcon from "../ui/button-icon/ButtonIcon";
 import { useHistoricoStore } from "@/app/shared/stores/useHistoricoStore";
 import { ordenarHistoricoPorMes } from "@/app/shared/utils/ordenar-historico";
 
 import { useSaldoStore } from "@/app/shared/stores/saldoStorage";
 import { formatarParaBRL } from "@/app/shared/utils/formatar-currency";
-import ModalConfirmacao from "../ui/ModalConfirmacao";
+import ModalConfirmacao from "../ui/modal-confirmacao/ModalConfirmacao";
 
 export default function Extrato() {
 	const historico = useHistoricoStore((state) => state.historico);
