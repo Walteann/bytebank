@@ -1,4 +1,4 @@
-import ButtonIcon from "../ui/ButtonIcon";
+import ButtonIcon from "../ui/button-icon/ButtonIcon";
 
 import { FaRegUser } from "react-icons/fa6";
 

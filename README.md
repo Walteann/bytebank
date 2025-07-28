@@ -17,6 +17,7 @@ Este é o projeto final da fase 01, que reúne os conhecimentos adquiridos em to
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [TypeScript](https://www.typescriptlang.org/) – Tipagem estática
 - Design System baseado no [Figma oficial do projeto](https://www.figma.com/design/ns5TC3X5Xr8V7I3LYKg9KA/ProjetoFinanceiro?node-id=503-4264)
+- [Storybook](https://storybook.js.org/docs) - Storybook para documentação dos componentes
 
 ---
 
@@ -74,3 +75,29 @@ yarn dev
 ### 🚀 Funcionalidade Plus: Pix
 
 A cada 2 minutos o usuário recebe um pix para carregar o saldo.
+
+
+
+## Como rodar o Storybook
+
+O Storybook permite visualizar e documentar os componentes do projeto de forma isolada, facilitando testes e desenvolvimento de interface.
+
+### Passos para rodar o Storybook
+
+1. **Instale as dependências do projeto** (caso ainda não tenha feito):
+
+```bash
+npm install
+
+```
+
+2. Execute o Storybook no ambiente local:
+
+```bash
+npm run storybook
+
+```
+
+Acesse no navegador:
+
+Abra http://localhost:6006 para visualizar os componentes.

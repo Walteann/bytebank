@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Button from "../ui/Button";
-import InputNumber from "../ui/InputNumber";
-import InputSelect from "../ui/InputSelect";
+import Button from "../ui/button/Button";
+import InputNumber from "../ui/inputNumber/InputNumber";
+import InputSelect from "../ui/inputSelect/InputSelect";
 import { v4 as uuidv4 } from "uuid";
 import { HistoricoTransacao } from "@/app/shared/interfaces/historico";
 import { useHistoricoStore } from "@/app/shared/stores/useHistoricoStore";
